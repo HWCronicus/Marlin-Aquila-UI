@@ -436,8 +436,6 @@ uint8_t HAL_get_reset_source() {
 }
 #pragma pop_macro("WDT")
 
-void HAL_reboot() { NVIC_SystemReset(); }
-
 extern "C" {
   void * _sbrk(int incr);
 

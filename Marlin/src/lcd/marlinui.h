@@ -39,7 +39,7 @@
   #include "tft_io/touch_calibration.h"
 #endif
 
-#if ANY(HAS_LCD_MENU, ULTIPANEL_FEEDMULTIPLY, SOFT_RESET_ON_KILL)
+#if EITHER(HAS_LCD_MENU, ULTIPANEL_FEEDMULTIPLY)
   #define HAS_ENCODER_ACTION 1
 #endif
 
@@ -55,7 +55,7 @@
   #include "../module/printcounter.h"
 #endif
 
-#if BOTH(HAS_LCD_MENU, ADVANCED_PAUSE_FEATURE) || BOTH(CREALITY_DWIN_EXTUI, ADVANCED_PAUSE_FEATURE)
+#if BOTH(HAS_LCD_MENU, ADVANCED_PAUSE_FEATURE) || BOTH(DWIN_CREALITY_LCD, ADVANCED_PAUSE_FEATURE)
   #include "../feature/pause.h"
   #include "../module/motion.h" // for active_extruder
 #endif
@@ -155,34 +155,13 @@
         current_position.set(dest);
       #endif
     }
-    float axis_value(const AxisEnum axis) {
-      return NATIVE_TO_LOGICAL(processing ? destination[axis] : SUM_TERN(IS_KINEMATIC, current_position[axis], offset), axis);
-    }
-    bool apply_diff(const AxisEnum axis, const_float_t diff, const_float_t min, const_float_t max) {
-      #if IS_KINEMATIC
-        float &valref = offset;
-        const float rmin = min - current_position[axis], rmax = max - current_position[axis];
-      #else
-        float &valref = current_position[axis];
-        const float rmin = min, rmax = max;
-      #endif
-      valref += diff;
-      const float pre = valref;
-      if (min != max) {
-        if (diff < 0)
-          NOLESS(valref, rmin);
-        else
-          NOMORE(valref, rmax);
-      }
-      return pre != valref;
-    }
     #if IS_KINEMATIC
       static bool processing;
     #else
       static bool constexpr processing = false;
     #endif
     static void task();
-    static void soon(const AxisEnum axis
+    static void soon(AxisEnum axis
       #if MULTI_MANUAL
         , const int8_t eindex=-1
       #endif
@@ -365,7 +344,6 @@ public:
         static void draw_marlin_bootscreen(const bool line2=false);
         static void show_marlin_bootscreen();
         static void show_bootscreen();
-        static void bootscreen_completion(const millis_t sofar);
       #endif
 
       #if HAS_MARLINUI_U8GLIB
@@ -544,7 +522,7 @@ public:
 
   #endif
 
-  #if BOTH(HAS_LCD_MENU, ADVANCED_PAUSE_FEATURE) || BOTH(CREALITY_DWIN_EXTUI, ADVANCED_PAUSE_FEATURE)
+  #if BOTH(HAS_LCD_MENU, ADVANCED_PAUSE_FEATURE) || BOTH(DWIN_CREALITY_LCD, ADVANCED_PAUSE_FEATURE)
     static void pause_show_message(const PauseMessage message, const PauseMode mode=PAUSE_MODE_SAME, const uint8_t extruder=active_extruder);
   #else
     static inline void _pause_show_message() {}

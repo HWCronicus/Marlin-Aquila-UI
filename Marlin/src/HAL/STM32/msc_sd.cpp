@@ -38,7 +38,7 @@ public:
         return &card.media_usbFlashDrive;
       #endif
     #else
-      return card.diskIODriver();
+      return diskIODriver();
     #endif
   }
 

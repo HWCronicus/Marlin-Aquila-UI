@@ -25,7 +25,8 @@
 #include "../core/types.h"
 #include "../core/millis_t.h"
 
-void safe_delay(millis_t ms);           // Delay ensuring that temperatures are updated and the watchdog is kept alive.
+// Delay that ensures heaters and watchdog are kept alive
+void safe_delay(millis_t ms);
 
 #if ENABLED(SERIAL_OVERRUN_PROTECTION)
   void serial_delay(const millis_t ms);

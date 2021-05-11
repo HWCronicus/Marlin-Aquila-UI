@@ -21,12 +21,11 @@
  */
 #ifdef __MK20DX256__
 
-#include "../../inc/MarlinConfig.h"
 #include "HAL.h"
-
 #include <SPI.h>
 #include <pins_arduino.h>
 #include "spi_pins.h"
+#include "../../core/macros.h"
 
 static SPISettings spiConfig;
 

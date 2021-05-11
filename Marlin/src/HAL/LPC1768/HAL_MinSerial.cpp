@@ -21,7 +21,6 @@
  */
 #ifdef TARGET_LPC1768
 
-#include "../../inc/MarlinConfig.h"
 #include "HAL.h"
 
 #if ENABLED(POSTMORTEM_DEBUGGING)

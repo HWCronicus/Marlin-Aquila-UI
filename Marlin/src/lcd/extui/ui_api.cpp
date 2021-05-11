@@ -263,7 +263,7 @@ namespace ExtUI {
     #define GET_TEMP_ADJUSTMENT(A) A
   #endif
 
-  celsius_float_t getActualTemp_celsius(const heater_t heater) {
+  float getActualTemp_celsius(const heater_t heater) {
     switch (heater) {
       #if ENABLED(HAS_HEATED_BED)
         case BED: return GET_TEMP_ADJUSTMENT(thermalManager.degBed());
@@ -275,11 +275,11 @@ namespace ExtUI {
     }
   }
 
-  celsius_float_t getActualTemp_celsius(const extruder_t extruder) {
+  float getActualTemp_celsius(const extruder_t extruder) {
     return GET_TEMP_ADJUSTMENT(thermalManager.degHotend(extruder - E0));
   }
 
-  celsius_float_t getTargetTemp_celsius(const heater_t heater) {
+  float getTargetTemp_celsius(const heater_t heater) {
     switch (heater) {
       #if ENABLED(HAS_HEATED_BED)
         case BED: return GET_TEMP_ADJUSTMENT(thermalManager.degTargetBed());
@@ -291,18 +291,26 @@ namespace ExtUI {
     }
   }
 
-  celsius_float_t getTargetTemp_celsius(const extruder_t extruder) {
+  float getTargetTemp_celsius(const extruder_t extruder) {
     return GET_TEMP_ADJUSTMENT(thermalManager.degTargetHotend(extruder - E0));
   }
 
   float getTargetFan_percent(const fan_t fan) {
-    UNUSED(fan);
-    return TERN0(HAS_FAN, thermalManager.fanSpeedPercent(fan - FAN0));
+    #if HAS_FAN
+      return thermalManager.fanSpeedPercent(fan - FAN0);
+    #else
+      UNUSED(fan);
+      return 0;
+    #endif
   }
 
   float getActualFan_percent(const fan_t fan) {
-    UNUSED(fan);
-    return TERN0(HAS_FAN, thermalManager.scaledFanSpeedPercent(fan - FAN0));
+    #if HAS_FAN
+      return thermalManager.scaledFanSpeedPercent(fan - FAN0);
+    #else
+      UNUSED(fan);
+      return 0;
+    #endif
   }
 
   float getAxisPosition_mm(const axis_t axis) {
@@ -691,7 +699,7 @@ namespace ExtUI {
   #endif
 
   feedRate_t getFeedrate_mm_s()                       { return feedrate_mm_s; }
-  int16_t getFlow_percent(const extruder_t extr)      { return planner.flow_percentage[extr]; }
+  int16_t getFlowPercentage(const extruder_t extr)    { return planner.flow_percentage[extr]; }
   feedRate_t getMinFeedrate_mm_s()                    { return planner.settings.min_feedrate_mm_s; }
   feedRate_t getMinTravelFeedrate_mm_s()              { return planner.settings.min_travel_feedrate_mm_s; }
   float getPrintingAcceleration_mm_s2()               { return planner.settings.acceleration; }
@@ -918,7 +926,7 @@ namespace ExtUI {
       thermalManager.updatePID();
     }
 
-    void startPIDTune(const celsius_t temp, extruder_t tool) {
+    void startPIDTune(const_float_t temp, extruder_t tool) {
       thermalManager.PID_autotune(temp, (heater_id_t)tool, 8, true);
     }
   #endif
@@ -935,7 +943,7 @@ namespace ExtUI {
       thermalManager.updatePID();
     }
 
-    void startBedPIDTune(const celsius_t temp) {
+    void startBedPIDTune(const_float_t temp) {
       thermalManager.PID_autotune(temp, H_BED, 4, true);
     }
   #endif

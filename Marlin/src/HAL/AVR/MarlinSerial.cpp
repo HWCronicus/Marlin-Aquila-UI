@@ -567,7 +567,7 @@ ISR(SERIAL_REGNAME(USART, SERIAL_PORT, _UDRE_vect)) {
 
 // Because of the template definition above, it's required to instantiate the template to have all methods generated
 template class MarlinSerial< MarlinSerialCfg<SERIAL_PORT> >;
-MSerialT1 customizedSerial1(MSerialT1::HasEmergencyParser);
+MSerialT customizedSerial1(MSerialT::HasEmergencyParser);
 
 #ifdef SERIAL_PORT_2
 
@@ -582,24 +582,7 @@ MSerialT1 customizedSerial1(MSerialT1::HasEmergencyParser);
 
   template class MarlinSerial< MarlinSerialCfg<SERIAL_PORT_2> >;
   MSerialT2 customizedSerial2(MSerialT2::HasEmergencyParser);
-
-#endif // SERIAL_PORT_2
-
-#ifdef SERIAL_PORT_3
-
-  // Hookup ISR handlers
-  ISR(SERIAL_REGNAME(USART, SERIAL_PORT_3, _RX_vect)) {
-    MarlinSerial<MarlinSerialCfg<SERIAL_PORT_3>>::store_rxd_char();
-  }
-
-  ISR(SERIAL_REGNAME(USART, SERIAL_PORT_3, _UDRE_vect)) {
-    MarlinSerial<MarlinSerialCfg<SERIAL_PORT_3>>::_tx_udr_empty_irq();
-  }
-
-  template class MarlinSerial< MarlinSerialCfg<SERIAL_PORT_3> >;
-  MSerialT3 customizedSerial3(MSerialT3::HasEmergencyParser);
-
-#endif // SERIAL_PORT_3
+#endif
 
 #ifdef MMU2_SERIAL_PORT
 
@@ -612,9 +595,8 @@ MSerialT1 customizedSerial1(MSerialT1::HasEmergencyParser);
   }
 
   template class MarlinSerial< MMU2SerialCfg<MMU2_SERIAL_PORT> >;
-  MSerialMMU2 mmuSerial(MSerialMMU2::HasEmergencyParser);
-
-#endif // MMU2_SERIAL_PORT
+  MSerialT3 mmuSerial(MSerialT3::HasEmergencyParser);
+#endif
 
 #ifdef LCD_SERIAL_PORT
 
@@ -627,7 +609,7 @@ MSerialT1 customizedSerial1(MSerialT1::HasEmergencyParser);
   }
 
   template class MarlinSerial< LCDSerialCfg<LCD_SERIAL_PORT> >;
-  MSerialLCD lcdSerial(MSerialLCD::HasEmergencyParser);
+  MSerialT4 lcdSerial(MSerialT4::HasEmergencyParser);
 
   #if HAS_DGUS_LCD
     template<typename Cfg>
@@ -640,13 +622,13 @@ MSerialT1 customizedSerial1(MSerialT1::HasEmergencyParser);
     }
   #endif
 
-#endif // LCD_SERIAL_PORT
+#endif
 
 #endif // !USBCON && (UBRRH || UBRR0H || UBRR1H || UBRR2H || UBRR3H)
 
 // For AT90USB targets use the UART for BT interfacing
 #if defined(USBCON) && ENABLED(BLUETOOTH)
-  MSerialBT bluetoothSerial(false);
+  MSerialT5 bluetoothSerial(false);
 #endif
 
 #endif // __AVR__

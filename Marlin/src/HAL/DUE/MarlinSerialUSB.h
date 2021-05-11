@@ -27,9 +27,11 @@
  */
 
 #include "../../inc/MarlinConfig.h"
-#include "../../core/serial_hook.h"
+#if HAS_USB_SERIAL
 
 #include <WString.h>
+#include "../../core/serial_hook.h"
+
 
 struct MarlinSerialUSB {
   void begin(const long);
@@ -48,18 +50,14 @@ struct MarlinSerialUSB {
     FORCE_INLINE int rxMaxEnqueued() { return 0; }
   #endif
 };
+typedef Serial1Class<MarlinSerialUSB> MSerialT;
 
 #if SERIAL_PORT == -1
-  typedef Serial1Class<MarlinSerialUSB> MSerialT1;
-  extern MSerialT1 customizedSerial1;
+  extern MSerialT customizedSerial1;
 #endif
 
 #if SERIAL_PORT_2 == -1
-  typedef Serial1Class<MarlinSerialUSB> MSerialT2;
-  extern MSerialT2 customizedSerial2;
+  extern MSerialT customizedSerial2;
 #endif
 
-#if SERIAL_PORT_3 == -1
-  typedef Serial1Class<MarlinSerialUSB> MSerialT3;
-  extern MSerialT3 customizedSerial3;
-#endif
+#endif // HAS_USB_SERIAL

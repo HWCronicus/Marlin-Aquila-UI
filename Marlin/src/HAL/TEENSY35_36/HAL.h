@@ -101,7 +101,7 @@ void HAL_clear_reset_source();
 // Reset reason
 uint8_t HAL_get_reset_source();
 
-void HAL_reboot();
+inline void HAL_reboot() {}  // reboot the board or restart the bootloader
 
 FORCE_INLINE void _delay_ms(const int delay_ms) { delay(delay_ms); }
 

@@ -82,8 +82,4 @@
   #define UNUSED(x) ((void)(x))
 #endif
 
-#ifndef FORCE_INLINE
-  #define FORCE_INLINE inline __attribute__((always_inline))
-#endif
-
 #include "progmem.h"
