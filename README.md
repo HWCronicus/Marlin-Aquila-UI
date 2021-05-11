@@ -1,3 +1,12 @@
+# Voxelab Aquila V2 Extensible UI
+
+This is a port of the Ender 3 V2 Extensible UI for the Voxelab Aquila. This port adds tons of extra functionality to the Aquila right from the LCD screen. All the heavy lifting for this goes to Jyers and the guys working on the main branch of this project. I just simply edited it to work on the Aquila. 
+Ive also added 11 different color "Themes" for the Aquila that can be flashed to the LCD Screen firmware.
+
+Big thanks to Jyers and the guys working on the main branch (https://github.com/Jyers)
+and to 
+Alexqzd for his earlier versions (https://github.com/alexqzd)
+
 # Ender 3 V2 Extensible UI
 
 This fork was created with the intention of giving the best possible experience to E3V2 users. However, GitHub, flashing new firmware, etc. can all be quite daunting for new users. Pretty much everything you need to know is here on github, so here's a quick rundown of where to find what you need!
