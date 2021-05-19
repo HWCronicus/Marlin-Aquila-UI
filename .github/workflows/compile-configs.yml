@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        board: [V4,V427]
+        board: [V4]
     steps:
     - uses: actions/checkout@v2
     - name: Cache pip
@@ -37,7 +37,7 @@ jobs:
       id: build_configs
       run: |
         if [ "$BOARD" = V4 ]; then BOARDTMP=v4.2.2; else BOARDTMP=v4.2.7; fi;
-        echo "::set-output name=filename::Aquila-Default-${BOARDTMP}.bin"
+        echo "::set-output name=filename::Aquila-Default.bin"
         cp Configuration\ Files/Aquila\ Templates/Default-NoProbe/Configuration.h Marlin/Configuration.h
         cp Configuration\ Files/Aquila\ Templates/Default-NoProbe/Configuration_adv.h Marlin/Configuration_adv.h
         sed -i "s/#define MOTHERBOARD.*/#define MOTHERBOARD BOARD_CREALITY_$BOARD/g" Marlin/Configuration.h
@@ -65,8 +65,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        board: [V4,V427]
-        grid: [3,5]
+        board: [V4]
+        grid: [3,4,5]
         highspeed: [true,false]
     steps:
     - uses: actions/checkout@v2
@@ -93,7 +93,7 @@ jobs:
       run: |
         if ($HS); then HSTMP=-HS; else HSTMP=; fi;
         if [ "$BOARD" = V4 ]; then BOARDTMP=v4.2.2; else BOARDTMP=v4.2.7; fi;
-        echo "::set-output name=filename::Aquila-BLTouch-${GRID}x${GRID}${HSTMP}-${BOARDTMP}.bin"
+        echo "::set-output name=filename::Aquila-BLTouch-${GRID}x${GRID}${HSTMP}.bin"
         cp Configuration\ Files/Aquila\ Templates/BLTouch-3x3/Configuration.h Marlin/Configuration.h
         cp Configuration\ Files/Aquila\ Templates/BLTouch-3x3/Configuration_adv.h Marlin/Configuration_adv.h
         sed -i "s/#define MOTHERBOARD.*/#define MOTHERBOARD BOARD_CREALITY_$BOARD/g" Marlin/Configuration.h
@@ -126,8 +126,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        board: [V4,V427]
-        grid: [3,5]
+        board: [V4]
+        grid: [3,4,5]
     steps:
     - uses: actions/checkout@v2
     - name: Cache pip
@@ -152,7 +152,7 @@ jobs:
       id: build_configs
       run: |
         if [ "$BOARD" = V4 ]; then BOARDTMP=v4.2.2; else BOARDTMP=v4.2.7; fi;
-        echo "::set-output name=filename::Aquila-ManualMesh-${GRID}x${GRID}-${BOARDTMP}.bin"
+        echo "::set-output name=filename::Aquila-ManualMesh-${GRID}x${GRID}.bin"
         cp Configuration\ Files/Aquila\ Templates/ManualMesh-3x3/Configuration.h Marlin/Configuration.h
         cp Configuration\ Files/Aquila\ Templates/ManualMesh-3x3/Configuration_adv.h Marlin/Configuration_adv.h
         sed -i "s/#define MOTHERBOARD.*/#define MOTHERBOARD BOARD_CREALITY_$BOARD/g" Marlin/Configuration.h
@@ -182,7 +182,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        board: [V4,V427]
+        board: [V4]
         grid: [10,15]
         highspeed: [true,false]
     steps:
@@ -210,7 +210,7 @@ jobs:
       run: |
         if ($HS); then HSTMP=-HS; else HSTMP=; fi;
         if [ "$BOARD" = V4 ]; then BOARDTMP=v4.2.2; else BOARDTMP=v4.2.7; fi;
-        echo "::set-output name=filename::Aquila-UBL-BLTouch-${GRID}x${GRID}${HSTMP}-${BOARDTMP}.bin"
+        echo "::set-output name=filename::Aquila-UBL-BLTouch-${GRID}x${GRID}${HSTMP}.bin"
         cp Configuration\ Files/Aquila\ Templates/UBL-BLTouch-10x10/Configuration.h Marlin/Configuration.h
         cp Configuration\ Files/Aquila\ Templates/UBL-BLTouch-10x10/Configuration_adv.h Marlin/Configuration_adv.h
         sed -i "s/#define MOTHERBOARD.*/#define MOTHERBOARD BOARD_CREALITY_$BOARD/g" Marlin/Configuration.h
@@ -243,7 +243,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        board: [V4,V427]
+        board: [V4]
         grid: [3,5]
     steps:
     - uses: actions/checkout@v2
@@ -269,7 +269,7 @@ jobs:
       id: build_configs
       run: |
         if [ "$BOARD" = V4 ]; then BOARDTMP=v4.2.2; else BOARDTMP=v4.2.7; fi;
-        echo "::set-output name=filename::Aquila-UBL-NoProbe-${GRID}x${GRID}-${BOARDTMP}.bin"
+        echo "::set-output name=filename::Aquila-UBL-NoProbe-${GRID}x${GRID}.bin"
         cp Configuration\ Files/Aquila\ Templates/UBL-NoProbe-3x3/Configuration.h Marlin/Configuration.h
         cp Configuration\ Files/Aquila\ Templates/UBL-NoProbe-3x3/Configuration_adv.h Marlin/Configuration_adv.h
         sed -i "s/#define MOTHERBOARD.*/#define MOTHERBOARD BOARD_CREALITY_$BOARD/g" Marlin/Configuration.h
