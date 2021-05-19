@@ -36,10 +36,7 @@ jobs:
     - name: Run PlatformIO BL-Touch
       id: build_configs
       run: |
-<<<<<<< HEAD
-=======
         if [ "$BOARD" = V4 ]; then BOARDTMP=v4.2.2; else BOARDTMP=v4.2.7; fi;
->>>>>>> Aquila_Extensible_UI
         echo "::set-output name=filename::Aquila-Default.bin"
         cp Configuration\ Files/Aquila\ Templates/Default-NoProbe/Configuration.h Marlin/Configuration.h
         cp Configuration\ Files/Aquila\ Templates/Default-NoProbe/Configuration_adv.h Marlin/Configuration_adv.h
@@ -69,11 +66,7 @@ jobs:
     strategy:
       matrix:
         board: [V4]
-<<<<<<< HEAD
-        grid: [3,5,9]
-=======
         grid: [3,4,5]
->>>>>>> Aquila_Extensible_UI
         highspeed: [true,false]
     steps:
     - uses: actions/checkout@v2
@@ -99,10 +92,7 @@ jobs:
       id: build_configs
       run: |
         if ($HS); then HSTMP=-HS; else HSTMP=; fi;
-<<<<<<< HEAD
-=======
         if [ "$BOARD" = V4 ]; then BOARDTMP=v4.2.2; else BOARDTMP=v4.2.7; fi;
->>>>>>> Aquila_Extensible_UI
         echo "::set-output name=filename::Aquila-BLTouch-${GRID}x${GRID}${HSTMP}.bin"
         cp Configuration\ Files/Aquila\ Templates/BLTouch-3x3/Configuration.h Marlin/Configuration.h
         cp Configuration\ Files/Aquila\ Templates/BLTouch-3x3/Configuration_adv.h Marlin/Configuration_adv.h
@@ -137,11 +127,7 @@ jobs:
     strategy:
       matrix:
         board: [V4]
-<<<<<<< HEAD
-        grid: [3,4,5,7]
-=======
         grid: [3,4,5]
->>>>>>> Aquila_Extensible_UI
     steps:
     - uses: actions/checkout@v2
     - name: Cache pip
@@ -165,10 +151,6 @@ jobs:
     - name: Run PlatformIO BL-Touch
       id: build_configs
       run: |
-<<<<<<< HEAD
-=======
-        if [ "$BOARD" = V4 ]; then BOARDTMP=v4.2.2; else BOARDTMP=v4.2.7; fi;
->>>>>>> Aquila_Extensible_UI
         echo "::set-output name=filename::Aquila-ManualMesh-${GRID}x${GRID}.bin"
         cp Configuration\ Files/Aquila\ Templates/ManualMesh-3x3/Configuration.h Marlin/Configuration.h
         cp Configuration\ Files/Aquila\ Templates/ManualMesh-3x3/Configuration_adv.h Marlin/Configuration_adv.h
@@ -200,11 +182,7 @@ jobs:
     strategy:
       matrix:
         board: [V4]
-<<<<<<< HEAD
-        grid: [10,12,15]
-=======
         grid: [10,15]
->>>>>>> Aquila_Extensible_UI
         highspeed: [true,false]
     steps:
     - uses: actions/checkout@v2
@@ -230,10 +208,6 @@ jobs:
       id: build_configs
       run: |
         if ($HS); then HSTMP=-HS; else HSTMP=; fi;
-<<<<<<< HEAD
-=======
-        if [ "$BOARD" = V4 ]; then BOARDTMP=v4.2.2; else BOARDTMP=v4.2.7; fi;
->>>>>>> Aquila_Extensible_UI
         echo "::set-output name=filename::Aquila-UBL-BLTouch-${GRID}x${GRID}${HSTMP}.bin"
         cp Configuration\ Files/Aquila\ Templates/UBL-BLTouch-10x10/Configuration.h Marlin/Configuration.h
         cp Configuration\ Files/Aquila\ Templates/UBL-BLTouch-10x10/Configuration_adv.h Marlin/Configuration_adv.h
@@ -267,13 +241,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-<<<<<<< HEAD
-        board: [V4,]
-        grid: [3,5,9,15]
-=======
         board: [V4]
         grid: [3,5]
->>>>>>> Aquila_Extensible_UI
     steps:
     - uses: actions/checkout@v2
     - name: Cache pip
@@ -297,10 +266,6 @@ jobs:
     - name: Run PlatformIO BL-Touch
       id: build_configs
       run: |
-<<<<<<< HEAD
-=======
-        if [ "$BOARD" = V4 ]; then BOARDTMP=v4.2.2; else BOARDTMP=v4.2.7; fi;
->>>>>>> Aquila_Extensible_UI
         echo "::set-output name=filename::Aquila-UBL-NoProbe-${GRID}x${GRID}.bin"
         cp Configuration\ Files/Aquila\ Templates/UBL-NoProbe-3x3/Configuration.h Marlin/Configuration.h
         cp Configuration\ Files/Aquila\ Templates/UBL-NoProbe-3x3/Configuration_adv.h Marlin/Configuration_adv.h
