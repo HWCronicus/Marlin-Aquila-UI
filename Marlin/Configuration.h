@@ -466,14 +466,14 @@
 // Above this temperature the heater will be switched off.
 // This can protect components from overheating, but NOT from shorts and failures.
 // (Use MINTEMP for thermistor short/failure protection.)
-#define HEATER_0_MAXTEMP 300
-#define HEATER_1_MAXTEMP 300
-#define HEATER_2_MAXTEMP 300
-#define HEATER_3_MAXTEMP 300
-#define HEATER_4_MAXTEMP 300
-#define HEATER_5_MAXTEMP 300
-#define HEATER_6_MAXTEMP 300
-#define HEATER_7_MAXTEMP 300
+#define HEATER_0_MAXTEMP 275
+#define HEATER_1_MAXTEMP 275
+#define HEATER_2_MAXTEMP 275
+#define HEATER_3_MAXTEMP 275
+#define HEATER_4_MAXTEMP 275
+#define HEATER_5_MAXTEMP 275
+#define HEATER_6_MAXTEMP 275
+#define HEATER_7_MAXTEMP 275
 #define BED_MAXTEMP      120
 #define CHAMBER_MAXTEMP  60
 
@@ -800,14 +800,14 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 420 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 93 }
 
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 500, 500, 5, 25 }
+#define DEFAULT_MAX_FEEDRATE          { 500, 500, 5, 80 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -1056,7 +1056,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -52, -13, -2.93 }
+#define NOZZLE_TO_PROBE_OFFSET { -51, -12, 0 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1234,14 +1234,14 @@
 
 // The size of the print bed
 #define X_BED_SIZE 220
-#define Y_BED_SIZE 230
+#define Y_BED_SIZE 220
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
 #define Y_MIN_POS 0
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE + 15 // Extended max to allow the probe to reach more of the bed.
-#define Y_MAX_POS Y_BED_SIZE
+#define Y_MAX_POS Y_BED_SIZE + 15
 #define Z_MAX_POS 250
 
 /**
@@ -1286,7 +1286,7 @@
  * RAMPS-based boards use SERVO3_PIN for the first runout sensor.
  * For other boards you may need to define FIL_RUNOUT_PIN, FIL_RUNOUT2_PIN, etc.
  */
-//#define FILAMENT_RUNOUT_SENSOR
+#define FILAMENT_RUNOUT_SENSOR
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)
   #define FIL_RUNOUT_ENABLED_DEFAULT false // Enable the sensor on startup. Override with M412 followed by M500.
   #define NUM_RUNOUT_SENSORS   1          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.

@@ -452,7 +452,7 @@ inline uint16_t CrealityDWINClass::GetColor(uint8_t color, uint16_t original, bo
       return (light) ? Color_Light_Brown : Color_Brown;
       break;          
     case Black:
-      return Color_Black;
+      return Color_White;
       break;                             
   }
   return Color_White;

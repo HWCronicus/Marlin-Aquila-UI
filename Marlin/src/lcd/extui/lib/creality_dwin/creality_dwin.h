@@ -237,17 +237,18 @@ enum colorID : uint8_t {
 #define Color_Light_Brown   0x6204
 #define Color_Black         0x0000
 #define Color_Grey          0x18E3
-#define Color_Bg_Window     0x31E8  // Popup background color
+#define Color_Bg_Window     0xEF7D  // Popup background color
 #define Color_Bg_Blue       0x1125  // Dark blue background color
-#define Color_Bg_Black      0x0841  // Black background color
-#define Color_Bg_Red        0xF00F  // Red background color
-#define Popup_Text_Color    0xD6BA  // Popup font background color
-#define Line_Color          0x3A6A  // Split line color
-#define Rectangle_Color     0xEE2F  // Blue square cursor color
-#define Percent_Color       0xFE29  // Percentage color
+#define Color_Bg_Black      0x0000  // Black background color
+#define Color_Bg_White      0xFFFF  // Black background color
+#define Color_Bg_Red        0xF945  // Red background color
+#define Popup_Text_Color    0x0000  // Popup font background color
+#define Line_Color          0x8000  // Split line color
+#define Rectangle_Color     0xF800  // Red square cursor color
+#define Percent_Color       0xFCF5  // Percentage color
 #define BarFill_Color       0x10E4  // Fill color of progress bar
-#define Select_Color        0x33BB  // Selected color
-#define Check_Color         0x4E5C  // Check-box check color
+#define Select_Color        0xF800  // Selected color
+#define Check_Color         0xFE5C  // Check-box check color
 
 class CrealityDWINClass {
 
