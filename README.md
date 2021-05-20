@@ -2,11 +2,11 @@
 
 The Aquila's stock firmware is good but still lacking in many features and is particularly buggy when using a BLTouch or BLTouch clone. So, this fork of Jyers Ender 3 V2 Extensible UI has been edited and tuned specifically for the Voxelab Aquila FDM printer.  Asides from the new features and increased functionality of this firmware, I have also created several new custom colored icon sets (DWIN_SET) to further customize the look of your Aquila printer. This is still a WIP and if you have any problems or find bugs related to this firmware on your Aquila, please let me know. In the works is a version of this with a white background and color scheme of the stock Aquila firmware as well as a horizontal layout for use with stock Aquila LCD mounting.
 
-To use this firmware, you will need to print a vertical LCD screen mount.
-https://www.thingiverse.com/thing:4752969
-https://www.thingiverse.com/thing:4781620
-https://www.thingiverse.com/thing:4764038
-https://www.thingiverse.com/thing:4751892
+To use this firmware, you will need a micro SD card, and a vertical LCD screen mount. You can print the screen mount yourself and I've linked some below.
+- https://www.thingiverse.com/thing:4752969
+- https://www.thingiverse.com/thing:4781620
+- https://www.thingiverse.com/thing:4764038
+- https://www.thingiverse.com/thing:4751892
 
 Big thanks to the guys at the original fork for doing all the major work on this project.  
 
