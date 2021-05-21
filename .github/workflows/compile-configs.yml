@@ -36,7 +36,6 @@ jobs:
     - name: Run PlatformIO BL-Touch
       id: build_configs
       run: |
-        if [ "$BOARD" = V4 ]; then BOARDTMP=v4.2.2; else BOARDTMP=v4.2.7; fi;
         echo "::set-output name=filename::Aquila-Default.bin"
         cp Configuration\ Files/Aquila\ Templates/Default-NoProbe/Configuration.h Marlin/Configuration.h
         cp Configuration\ Files/Aquila\ Templates/Default-NoProbe/Configuration_adv.h Marlin/Configuration_adv.h
@@ -92,7 +91,6 @@ jobs:
       id: build_configs
       run: |
         if ($HS); then HSTMP=-HS; else HSTMP=; fi;
-        if [ "$BOARD" = V4 ]; then BOARDTMP=v4.2.2; else BOARDTMP=v4.2.7; fi;
         echo "::set-output name=filename::Aquila-BLTouch-${GRID}x${GRID}${HSTMP}.bin"
         cp Configuration\ Files/Aquila\ Templates/BLTouch-3x3/Configuration.h Marlin/Configuration.h
         cp Configuration\ Files/Aquila\ Templates/BLTouch-3x3/Configuration_adv.h Marlin/Configuration_adv.h
